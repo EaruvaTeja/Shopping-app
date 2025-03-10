@@ -1,0 +1,223 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+    <h2>Checkout</h2>
+    <p>Total Amount: Rs. {{ total }}</p>
+    <button id="pay-button">Pay Now</button>
+    <script>
+        document.getElementById('pay-button').onclick = function(e) {
+            var options = {
+                "key": "{{ key_id }}", // Your Razorpay Test Key ID
+                "amount": "{{ order['amount'] }}", // Amount in paise
+                "currency": "{{ order['currency'] }}",
+                "name": "Demo Marketplace",
+                "description": "Test Transaction",
+                "order_id": "{{ order['id'] }}", // Razorpay order id
+                "handler": function (response){
+                    // Handle successful payment here (you can also verify payment on server)
+                    alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+                    // Redirect after successful payment if needed
+                    window.location.href = "/";
+                },
+                "prefill": {
+                    "name": "Test User",
+                    "email": "testuser@example.com",
+                    "contact": "9999999999"
+                },
+                "theme": {
+                    "color": "#F37254"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+            e.preventDefault();
+        }
+    </script>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout | Demo Marketplace</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .checkout-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            transform: translateY(0);
+            animation: slideUp 0.6s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .amount-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .amount-label {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 8px;
+        }
+
+        .total-amount {
+            font-size: 42px;
+            color: #27ae60;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        #pay-button {
+            background: linear-gradient(135deg, #27ae60, #219a52);
+            color: white;
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        #pay-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.3);
+        }
+
+        .security-note {
+            text-align: center;
+            margin-top: 25px;
+            color: #95a5a6;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .payment-icon {
+            font-size: 24px;
+        }
+
+        @media (max-width: 480px) {
+            .checkout-container {
+                padding: 25px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .total-amount {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="checkout-container">
+        <h2>Secure Checkout</h2>
+        
+        <div class="amount-section">
+            <div class="amount-label">Total Amount</div>
+            <div class="total-amount">
+                <i class="fas fa-rupee-sign"></i>
+                {{ total }}
+            </div>
+        </div>
+
+        <button id="pay-button">
+            <i class="fas fa-lock payment-icon"></i>
+            Complete Payment
+        </button>
+
+        <div class="security-note">
+            <i class="fas fa-shield-alt"></i>
+            256-bit SSL secured payment
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('pay-button').onclick = function(e) {
+            var options = {
+                "key": "{{ key_id }}",
+                "amount": "{{ order['amount'] }}",
+                "currency": "{{ order['currency'] }}",
+                "name": "Demo Marketplace",
+                "description": "Secure Transaction",
+                "order_id": "{{ order['id'] }}",
+                "handler": function (response){
+                    alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+                    window.location.href = "/";
+                },
+                "prefill": {
+                    "name": "Test User",
+                    "email": "testuser@example.com",
+                    "contact": "9999999999"
+                },
+                "theme": {
+                    "color": "#27ae60"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+            e.preventDefault();
+        }
+    </script>
+</body>
+</html>
