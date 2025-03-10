@@ -149,16 +149,16 @@ add_to_cart(session, 1, 2)  # Example of adding 2 Boots to the cart
 ## 10. ## Screenshots
 
 ### Screenshot 1
-![Screenshot 1](Screenshorts/Screenshot%201.jpg)
+![Screenshot 1](ScreenShorts/Screenshot 1.jpg)
 
 ### Screenshot 2
-![Screenshot 2](Screenshorts/Screenshot%202.jpg)
+![Screenshot 2](ScreenShorts/Screenshot 2.jpg)
 
 ### Screenshot 3
-![Screenshot 3](Screenshorts/Screenshot%203.jpg)
+![Screenshot 3](ScreenShorts/Screenshot 3.jpg)
 
 ### Screenshot 4
-![Screenshot 4](Screenshorts/Screenshot%204.jpg)
+![Screenshot 4](ScreenShorts/Screenshot 1.jpg)
 
 
 
