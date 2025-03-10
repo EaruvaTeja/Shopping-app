@@ -146,6 +146,22 @@ add_to_cart(session, 1, 2)  # Example of adding 2 Boots to the cart
 - Utilize code blocks for code snippets.
 - Number the items in lists to improve readability.
 
-## 10. Conclusion
+## 10. ## Screenshots
+
+### Screenshot 1
+![Screenshot 1](Screenshorts/Screenshot%201.jpg)
+
+### Screenshot 2
+![Screenshot 2](Screenshorts/Screenshot%202.jpg)
+
+### Screenshot 3
+![Screenshot 3](Screenshorts/Screenshot%203.jpg)
+
+### Screenshot 4
+![Screenshot 4](Screenshorts/Screenshot%204.jpg)
+
+
+
+## 11. Conclusion
 
 This documentation provides a comprehensive overview of the Shopping App. The application demonstrates the implementation of backend features essential for an e-commerce platform, including user authentication, product management, and cart functionality. Users can extend this project by integrating a user interface and database connectivity for a complete shopping experience.
